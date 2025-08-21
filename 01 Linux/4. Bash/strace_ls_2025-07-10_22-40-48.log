@@ -1,0 +1,80 @@
+execve("/usr/bin/ls", ["ls", "/"], 0xffffec8b8688 /* 16 vars */) = 0
+brk(NULL)                               = 0xbda9aebdf000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xf33b867c7000
+faccessat(AT_FDCWD, "/etc/ld.so.preload", R_OK) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=24403, ...}) = 0
+mmap(NULL, 24403, PROT_READ, MAP_PRIVATE, 3, 0) = 0xf33b867c1000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=198800, ...}) = 0
+mmap(NULL, 337472, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0xf33b8673b000
+mmap(0xf33b86740000, 271936, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xf33b86740000
+munmap(0xf33b8673b000, 20480)           = 0
+munmap(0xf33b86783000, 42560)           = 0
+mprotect(0xf33b8676c000, 77824, PROT_NONE) = 0
+mmap(0xf33b8677f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2f000) = 0xf33b8677f000
+mmap(0xf33b86781000, 5696, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xf33b86781000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\360\206\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1722920, ...}) = 0
+mmap(NULL, 1892240, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0xf33b86572000
+mmap(0xf33b86580000, 1826704, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xf33b86580000
+munmap(0xf33b86572000, 57344)           = 0
+munmap(0xf33b8673e000, 8080)            = 0
+mprotect(0xf33b8671a000, 77824, PROT_NONE) = 0
+mmap(0xf33b8672d000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x19d000) = 0xf33b8672d000
+mmap(0xf33b86732000, 49040, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0xf33b86732000
+close(3)                                = 0
+openat(AT_FDCWD, "/lib/aarch64-linux-gnu/libpcre2-8.so.0", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0\267\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0644, st_size=592328, ...}) = 0
+mmap(NULL, 721536, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_DENYWRITE, -1, 0) = 0xf33b864cf000
+mmap(0xf33b864d0000, 656000, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0) = 0xf33b864d0000
+munmap(0xf33b864cf000, 4096)            = 0
+munmap(0xf33b86571000, 57984)           = 0
+mprotect(0xf33b86558000, 94208, PROT_NONE) = 0
+mmap(0xf33b8656f000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x8f000) = 0xf33b8656f000
+close(3)                                = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0xf33b867bf000
+set_tid_address(0xf33b867bf0f0)         = 9581
+set_robust_list(0xf33b867bf100, 24)     = 0
+rseq(0xf33b867bf740, 0x20, 0, 0xd428bc00) = 0
+mprotect(0xf33b8672d000, 12288, PROT_READ) = 0
+mprotect(0xf33b8656f000, 4096, PROT_READ) = 0
+mprotect(0xf33b8677f000, 4096, PROT_READ) = 0
+mprotect(0xbda9a7cee000, 8192, PROT_READ) = 0
+mprotect(0xf33b867cc000, 8192, PROT_READ) = 0
+prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+munmap(0xf33b867c1000, 24403)           = 0
+statfs("/sys/fs/selinux", 0xfffff24acd60) = -1 ENOENT (No such file or directory)
+statfs("/selinux", 0xfffff24acd60)      = -1 ENOENT (No such file or directory)
+getrandom("\x9f\x0c\x72\x93\x97\x07\x69\x2e", 8, GRND_NONBLOCK) = 8
+brk(NULL)                               = 0xbda9aebdf000
+brk(0xbda9aec00000)                     = 0xbda9aec00000
+openat(AT_FDCWD, "/proc/filesystems", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+read(3, "nodev\tsysfs\nnodev\ttmpfs\nnodev\tbd"..., 1024) = 419
+read(3, "", 1024)                       = 0
+close(3)                                = 0
+faccessat(AT_FDCWD, "/etc/selinux/config", F_OK) = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=3055776, ...}) = 0
+mmap(NULL, 3055776, PROT_READ, MAP_PRIVATE, 3, 0) = 0xf33b86000000
+close(3)                                = 0
+ioctl(1, TCGETS, 0xfffff24acb90)        = -1 ENOTTY (Inappropriate ioctl for device)
+statx(AT_FDCWD, "/", AT_STATX_SYNC_AS_STAT|AT_NO_AUTOMOUNT, STATX_MODE, {stx_mask=STATX_BASIC_STATS|STATX_MNT_ID, stx_attributes=STATX_ATTR_MOUNT_ROOT, stx_mode=S_IFDIR|0755, stx_size=4096, ...}) = 0
+openat(AT_FDCWD, "/", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3
+fstat(3, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+getdents64(3, 0xbda9aebe56e0 /* 26 entries */, 32768) = 696
+getdents64(3, 0xbda9aebe56e0 /* 0 entries */, 32768) = 0
+close(3)                                = 0
+fstat(1, {st_mode=S_IFCHR|0666, st_rdev=makedev(0x1, 0x3), ...}) = 0
+ioctl(1, TCGETS, 0xfffff24aa5e0)        = -1 ENOTTY (Inappropriate ioctl for device)
+write(1, "bin\nbin.usr-is-merged\nboot\ncdrom"..., 156) = 156
+close(1)                                = 0
+close(2)                                = 0
+exit_group(0)                           = ?
++++ exited with 0 +++

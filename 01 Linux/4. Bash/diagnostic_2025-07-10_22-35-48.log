@@ -1,0 +1,187 @@
+2025-07-10 22:35:48 - === НАЧАЛО ДИАГНОСТИКИ СИСТЕМЫ ===
+2025-07-10 22:35:48 - Длительность теста: 300 секунд
+2025-07-10 22:35:48 - 
+=== МЕТРИКИ СИСТЕМЫ (ДО НАГРУЗКИ) ===
+2025-07-10 22:35:48 - 
+Свободное место на диске:
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              391M  1.4M  389M   1% /run
+efivarfs                           256K   32K  225K  13% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv  9.8G  8.0G  1.3G  86% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/nvme0n1p2                     1.7G  191M  1.4G  12% /boot
+/dev/nvme0n1p1                     952M  6.4M  945M   1% /boot/efi
+/dev/loop6p2                       511M  5.8M  430M   2% /mnt/disk2/btrfs
+/dev/loop5p1                       989M  107M  815M  12% /mnt/disk1
+/dev/loop7p1                       452M   24K  417M   1% /mnt/disk3/ext4
+/dev/loop6p1                       447M   35M  413M   8% /mnt/disk2/xfs
+/dev/loop7p2                       499M   24K  463M   1% /mnt/disk3/ntfs
+tmpfs                              391M   12K  391M   1% /run/user/1000
+2025-07-10 22:35:48 - 
+Топ-5 процессов по CPU:
+    PID    PPID CMD                         %CPU %MEM
+   9392    9391 bash system_diagnostics.sh  33.3  0.0
+   7251    6468 htop                         0.9  0.1
+   9390    1650 sudo bash system_diagnostic  0.7  0.1
+   9304       2 [kworker/0:3-events]         0.5  0.0
+   9226       2 [kworker/0:2-events]         0.4  0.0
+2025-07-10 22:35:48 - 
+Топ-5 процессов по памяти:
+    PID    PPID CMD                         %CPU %MEM
+   1156       1 dockerd --group docker --ex  0.0  1.7
+   1240    1156 containerd --config /run/sn  0.2  1.0
+   4086       1 /usr/lib/snapd/snapd         0.0  0.8
+    414       1 /usr/lib/systemd/systemd-jo  0.0  0.7
+    470       1 /sbin/multipathd -d -s       0.0  0.6
+2025-07-10 22:35:48 - 
+Использование памяти:
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       458Mi       1.8Gi       1.3Mi       1.8Gi       3.4Gi
+Swap:             0B          0B          0B
+2025-07-10 22:35:48 - 
+=== 1. СОЗДАНИЕ ИСКУССТВЕННОЙ НАГРУЗКИ ===
+2025-07-10 22:35:48 - Запуск CPU-нагруженного процесса (openssl speed)
+2025-07-10 22:35:48 - Запуск memory-нагруженного процесса (stress-ng)
+2025-07-10 22:35:48 - Запуск disk-нагруженного процесса (fio с ограничением размера)
+2025-07-10 22:35:48 - 
+=== 2. МОНИТОРИНГ ПОД НАГРУЗКОЙ ===
+2025-07-10 22:37:28 - 
+=== МЕТРИКИ СИСТЕМЫ (ЭТАП 1/3) ===
+2025-07-10 22:37:28 - 
+Свободное место на диске:
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              391M  1.4M  389M   1% /run
+efivarfs                           256K   32K  225K  13% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv  9.8G  8.5G  830M  92% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/nvme0n1p2                     1.7G  191M  1.4G  12% /boot
+/dev/nvme0n1p1                     952M  6.4M  945M   1% /boot/efi
+/dev/loop6p2                       511M  5.8M  430M   2% /mnt/disk2/btrfs
+/dev/loop5p1                       989M  107M  815M  12% /mnt/disk1
+/dev/loop7p1                       452M   24K  417M   1% /mnt/disk3/ext4
+/dev/loop6p1                       447M   35M  413M   8% /mnt/disk2/xfs
+/dev/loop7p2                       499M   24K  463M   1% /mnt/disk3/ntfs
+tmpfs                              391M   12K  391M   1% /run/user/1000
+2025-07-10 22:37:28 - 
+Топ-5 процессов по CPU:
+    PID    PPID CMD                         %CPU %MEM
+   9454    9453 stress-ng-vm [run]          43.8 13.3
+   9451    9436 openssl speed -multi 2      43.3  0.0
+   9450    9436 openssl speed -multi 2      43.2  0.0
+   9455    9452 stress-ng-vm [run]          42.9 13.3
+   9459    9445 fio --name=disk-test --file 11.6  0.1
+2025-07-10 22:37:28 - 
+Топ-5 процессов по памяти:
+    PID    PPID CMD                         %CPU %MEM
+   9455    9452 stress-ng-vm [run]          42.9 13.3
+   9454    9453 stress-ng-vm [run]          43.8 13.3
+   1156       1 dockerd --group docker --ex  0.0  1.7
+   9441    9392 stress-ng --vm 2 --vm-bytes  0.0  1.6
+   1240    1156 containerd --config /run/sn  0.2  1.0
+2025-07-10 22:37:28 - 
+Использование памяти:
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       1.5Gi       274Mi        15Mi       2.2Gi       2.3Gi
+Swap:             0B          0B          0B
+2025-07-10 22:39:08 - 
+=== МЕТРИКИ СИСТЕМЫ (ЭТАП 2/3) ===
+2025-07-10 22:39:08 - 
+Свободное место на диске:
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              391M  1.4M  389M   1% /run
+efivarfs                           256K   32K  225K  13% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv  9.8G  8.5G  830M  92% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/nvme0n1p2                     1.7G  191M  1.4G  12% /boot
+/dev/nvme0n1p1                     952M  6.4M  945M   1% /boot/efi
+/dev/loop6p2                       511M  5.8M  430M   2% /mnt/disk2/btrfs
+/dev/loop5p1                       989M  107M  815M  12% /mnt/disk1
+/dev/loop7p1                       452M   24K  417M   1% /mnt/disk3/ext4
+/dev/loop6p1                       447M   35M  413M   8% /mnt/disk2/xfs
+/dev/loop7p2                       499M   24K  463M   1% /mnt/disk3/ntfs
+tmpfs                              391M   12K  391M   1% /run/user/1000
+2025-07-10 22:39:08 - 
+Топ-5 процессов по CPU:
+    PID    PPID CMD                         %CPU %MEM
+   9450    9436 openssl speed -multi 2      44.4  0.1
+   9451    9436 openssl speed -multi 2      44.1  0.0
+   9455    9452 stress-ng-vm [run]          44.1  9.2
+   9454    9453 stress-ng-vm [run]          43.8 13.3
+   9459    9445 fio --name=disk-test --file 10.2  0.1
+2025-07-10 22:39:08 - 
+Топ-5 процессов по памяти:
+    PID    PPID CMD                         %CPU %MEM
+   9454    9453 stress-ng-vm [run]          43.8 13.3
+   9455    9452 stress-ng-vm [run]          44.1  2.3
+   1156       1 dockerd --group docker --ex  0.0  1.7
+   9441    9392 stress-ng --vm 2 --vm-bytes  0.0  1.6
+   1240    1156 containerd --config /run/sn  0.2  1.0
+2025-07-10 22:39:08 - 
+Использование памяти:
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       1.1Gi       891Mi        15Mi       2.0Gi       2.7Gi
+Swap:             0B          0B          0B
+2025-07-10 22:40:48 - 
+=== МЕТРИКИ СИСТЕМЫ (ЭТАП 3/3) ===
+2025-07-10 22:40:48 - 
+Свободное место на диске:
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              391M  1.4M  389M   1% /run
+efivarfs                           256K   32K  225K  13% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv  9.8G  8.5G  830M  92% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/nvme0n1p2                     1.7G  191M  1.4G  12% /boot
+/dev/nvme0n1p1                     952M  6.4M  945M   1% /boot/efi
+/dev/loop6p2                       511M  5.8M  430M   2% /mnt/disk2/btrfs
+/dev/loop5p1                       989M  107M  815M  12% /mnt/disk1
+/dev/loop7p1                       452M   24K  417M   1% /mnt/disk3/ext4
+/dev/loop6p1                       447M   35M  413M   8% /mnt/disk2/xfs
+/dev/loop7p2                       499M   24K  463M   1% /mnt/disk3/ntfs
+tmpfs                              391M   12K  391M   1% /run/user/1000
+2025-07-10 22:40:48 - 
+Топ-5 процессов по CPU:
+    PID    PPID CMD                         %CPU %MEM
+   9542    9392 ps -eo pid,ppid,cmd,%cpu,%m  100  0.0
+   9450    9436 openssl speed -multi 2      44.1  0.1
+   9451    9436 openssl speed -multi 2      44.0  0.1
+   9454    9453 stress-ng-vm [run]          43.9 13.3
+   9460    9445 fio --name=disk-test --file 10.5  0.1
+2025-07-10 22:40:48 - 
+Топ-5 процессов по памяти:
+    PID    PPID CMD                         %CPU %MEM
+   9454    9453 stress-ng-vm [run]          43.9 13.3
+   1156       1 dockerd --group docker --ex  0.0  1.7
+   9441    9392 stress-ng --vm 2 --vm-bytes  0.0  1.6
+   1240    1156 containerd --config /run/sn  0.2  1.0
+   4086       1 /usr/lib/snapd/snapd         0.0  0.8
+2025-07-10 22:40:48 - 
+Использование памяти:
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       1.1Gi       894Mi        15Mi       2.0Gi       2.7Gi
+Swap:             0B          0B          0B
+2025-07-10 22:40:48 - 
+=== 3. СОЗДАНИЕ СПЕЦИАЛЬНЫХ ПРОЦЕССОВ ===
+2025-07-10 22:40:48 - Создание процесса-зомби
+2025-07-10 22:40:48 - 
+=== 4. АНАЛИЗ СИСТЕМНЫХ ВЫЗОВОВ ===
+2025-07-10 22:40:48 - Запись системных вызовов (ограниченный набор)
+2025-07-10 22:40:48 - Завершение работы и очистка...
+2025-07-10 22:40:49 - Очистка завершена. Текущее состояние диска:
+Filesystem                         Size  Used Avail Use% Mounted on
+tmpfs                              391M  1.4M  389M   1% /run
+efivarfs                           256K   32K  225K  13% /sys/firmware/efi/efivars
+/dev/mapper/ubuntu--vg-ubuntu--lv  9.8G  8.0G  1.3G  86% /
+tmpfs                              2.0G     0  2.0G   0% /dev/shm
+tmpfs                              5.0M     0  5.0M   0% /run/lock
+/dev/nvme0n1p2                     1.7G  191M  1.4G  12% /boot
+/dev/nvme0n1p1                     952M  6.4M  945M   1% /boot/efi
+/dev/loop6p2                       511M  5.8M  430M   2% /mnt/disk2/btrfs
+/dev/loop5p1                       989M  107M  815M  12% /mnt/disk1
+/dev/loop7p1                       452M   24K  417M   1% /mnt/disk3/ext4
+/dev/loop6p1                       447M   35M  413M   8% /mnt/disk2/xfs
+/dev/loop7p2                       499M   24K  463M   1% /mnt/disk3/ntfs
+tmpfs                              391M   12K  391M   1% /run/user/1000
